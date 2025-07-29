@@ -37,11 +37,6 @@
       margin-top: 1rem;
       font-size: 2rem;
     }
-    #typing-text {
-      font-size: 1.1rem;
-      margin-top: 0.5rem;
-      height: 30px;
-    }
     section {
       margin: 2rem auto;
       max-width: 800px;
@@ -115,13 +110,28 @@
       font-size: 0.9rem;
       color: #666;
     }
+    .cert-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .cert-gallery img {
+      width: 300px;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .cert-gallery img:hover {
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
   <header>
     <img src="sekhar.jpg" alt="Profile Picture" class="profile-pic" />
     <h1>Gurrala Guru Sekhar Reddy</h1>
-    <div id="typing-text"></div>
+    <p>Aspiring Ethical Hacker | Java Programmer | Student at Annamacharya Group of Institutions</p>
     <a href="resume.pdf" class="button" target="_blank">Download Resume (PDF)</a>
     <br />
     <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
@@ -144,6 +154,10 @@
       <li>Introduction to Ethical Hacking – Great Learning – 2024</li>
       <li>Content Writing – Internshala – 2023</li>
     </ul>
+    <div class="cert-gallery">
+      <img src="NLP1.jpg" alt="Internship Certificate">
+      <img src="NLP2.jpg" alt="Completion Certificate">
+    </div>
   </section>
 
   <section>
@@ -178,35 +192,6 @@
     function toggleDarkMode() {
       document.body.classList.toggle('dark-mode');
     }
-
-    const typingElement = document.getElementById('typing-text');
-    const messages = [
-      "Hi, I'm Sekhar, a passionate Ethical Hacker...",
-      "A Java Programmer...",
-      "A Student at Annamacharya Group of Institutions..."
-    ];
-    let index = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-
-    function typeEffect() {
-      const current = messages[index];
-      const visibleText = isDeleting ? current.substring(0, charIndex--) : current.substring(0, charIndex++);
-      typingElement.innerHTML = visibleText;
-
-      if (!isDeleting && charIndex === current.length) {
-        isDeleting = true;
-        setTimeout(typeEffect, 1500);
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        index = (index + 1) % messages.length;
-        setTimeout(typeEffect, 300);
-      } else {
-        setTimeout(typeEffect, isDeleting ? 50 : 80);
-      }
-    }
-
-    typeEffect();
   </script>
 </body>
 </html>
